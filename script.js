@@ -2,13 +2,26 @@
    COSTA MOVELARIA — interações
    ========================================================= */
 
+
+const WHATSAPP_NUMBER = '5543988737802';
+
 document.addEventListener('DOMContentLoaded', () => {
   setYear();
+  setupWhatsappLinks();
   setupNavToggle();
   setupScrollReveal();
   setupTestimonialSlider();
   setupContactForm();
 });
+
+
+function setupWhatsappLinks() {
+  const ids = ['waHeader', 'waContato', 'waFloat'];
+  ids.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+  });
+}
 
 /* Ano automático no rodapé */
 function setYear() {
@@ -105,7 +118,7 @@ function setupTestimonialSlider() {
   startAutoplay();
 }
 
-/* Formulário de contato */
+/* Formulário de contato: monta a mensagem e abre o WhatsApp já preenchido */
 function setupContactForm() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
@@ -120,11 +133,27 @@ function setupContactForm() {
       return;
     }
 
-    // TODO: integrar com backend, serviço de e-mail (ex.: Formspree) ou API própria.
-    // Por enquanto, apenas confirma o recebimento e limpa o formulário.
     const nome = form.nome.value.trim();
-    status.textContent = `Obrigado, ${nome}! Sua mensagem foi registrada — vamos te responder em breve.`;
+    const telefone = form.telefone.value.trim();
+    const ambienteSelect = form.ambiente;
+    const ambiente = ambienteSelect.options[ambienteSelect.selectedIndex].text;
+    const mensagem = form.mensagem.value.trim();
+
+    const texto =
+      `Olá! Vim pelo site da Costa Movelaria e quero um orçamento.\n\n` +
+      `Nome: ${nome}\n` +
+      `Telefone: ${telefone}\n` +
+      `Ambiente: ${ambiente}\n` +
+      `Mensagem: ${mensagem}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+
+    status.textContent = 'Abrindo o WhatsApp com sua mensagem pronta... você só precisa apertar "Enviar" lá dentro.';
     status.style.color = '';
+
     form.reset();
+    // Redireciona a própria aba (mais confiável que window.open, que pode
+    // ser bloqueado como pop-up pelo navegador, principalmente no celular)
+    window.location.href = url;
   });
 }
