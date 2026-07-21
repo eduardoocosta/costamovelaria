@@ -2,7 +2,9 @@
    COSTA MOVELARIA — interações
    ========================================================= */
 
-
+/* ⚠️ ÚNICO LUGAR pra trocar o número do WhatsApp da marcenaria.
+   Formato: 55 + DDD + número, sem espaço, traço ou parênteses.
+   Ex.: (41) 99123-4567  →  '5541991234567' */
 const WHATSAPP_NUMBER = '5543988737802';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupContactForm();
 });
 
-
+/* Atualiza os 3 links fixos do WhatsApp (header, contato, botão flutuante)
+   a partir da constante WHATSAPP_NUMBER, pra não precisar editar o HTML */
 function setupWhatsappLinks() {
   const ids = ['waHeader', 'waContato', 'waFloat'];
   ids.forEach((id) => {
@@ -78,44 +81,18 @@ function setupScrollReveal() {
   });
 }
 
-/* Slider de depoimentos */
+/* Slider de depoimentos (Swiper.js — suporte real a arrastar/swipe no celular) */
 function setupTestimonialSlider() {
-  const track = document.getElementById('testimonialTrack');
-  const dotsWrap = document.getElementById('testimonialDots');
-  if (!track || !dotsWrap) return;
+  const el = document.getElementById('testimonialSwiper');
+  if (!el || typeof Swiper === 'undefined') return;
 
-  const slides = Array.from(track.children);
-  let current = 0;
-  let timer = null;
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.setAttribute('aria-label', `Ver depoimento ${i + 1}`);
-    if (i === 0) dot.classList.add('is-active');
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
+  new Swiper(el, {
+    loop: true,
+    speed: 500,
+    grabCursor: true,
+    autoplay: { delay: 6000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
   });
-
-  const dots = Array.from(dotsWrap.children);
-
-  function goTo(index) {
-    current = (index + slides.length) % slides.length;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
-  }
-
-  function startAutoplay() {
-    stopAutoplay();
-    timer = setInterval(() => goTo(current + 1), 6000);
-  }
-  function stopAutoplay() {
-    if (timer) clearInterval(timer);
-  }
-
-  track.parentElement.addEventListener('mouseenter', stopAutoplay);
-  track.parentElement.addEventListener('mouseleave', startAutoplay);
-
-  startAutoplay();
 }
 
 /* Formulário de contato: monta a mensagem e abre o WhatsApp já preenchido */

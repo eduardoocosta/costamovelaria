@@ -284,7 +284,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    ========================================================= */
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: var(--gap);
   margin-top: 50px;
 }
@@ -292,20 +292,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .catalog-photo {
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
-  background: linear-gradient(155deg, var(--surface), var(--bg-alt));
+  border: 1px solid var(--line);
   position: relative;
   overflow: hidden;
+  background: var(--surface);
 }
-.catalog-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(115deg, transparent 0 18px, rgba(198,161,91,0.06) 18px 20px);
+.catalog-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
 }
-.catalog-photo[data-tone="1"] { background: linear-gradient(155deg, #362A1B, #221B12); }
-.catalog-photo[data-tone="2"] { background: linear-gradient(155deg, #2E2519, #1E1912); }
-.catalog-photo[data-tone="3"] { background: linear-gradient(155deg, #3A2C19, #241C13); }
-.catalog-photo[data-tone="4"] { background: linear-gradient(155deg, #302516, #1F1911); }
+.catalog-card:hover .catalog-photo img { transform: scale(1.05); }
 
 .catalog-card h3 { font-size: 1.15rem; }
 .catalog-card p { color: var(--muted); font-size: 0.92rem; }
@@ -333,13 +332,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* =========================================================
    DEPOIMENTOS
    ========================================================= */
-.testimonial-slider { margin-top: 50px; max-width: 680px; margin-left: auto; margin-right: auto; }
-.testimonial-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
+.testimonial-slider {
+  margin-top: 50px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 44px;
+  --swiper-theme-color: var(--gold);
+  --swiper-pagination-bullet-inactive-color: var(--line);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: 9px;
+  --swiper-pagination-bullet-horizontal-gap: 7px;
+}
+.testimonial-slider .swiper-pagination-bullet {
+  /* aumenta a área de toque sem aumentar o bolinha visualmente */
+  padding: 6px;
+  background-clip: content-box;
 }
 .testimonial {
-  flex: 0 0 100%;
   margin: 0;
   text-align: center;
   padding: 0 12px;
@@ -357,15 +367,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   font-size: 0.8rem;
   color: var(--gold);
 }
-.testimonial-dots { display: flex; justify-content: center; gap: 10px; margin-top: 30px; }
-.testimonial-dots button {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  background: transparent;
-  padding: 0;
-}
-.testimonial-dots button.is-active { background: var(--gold); }
 
 /* =========================================================
    CONTATO
@@ -457,7 +458,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    ========================================================= */
 @media (max-width: 980px) {
   .section-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
   .process-list { grid-template-columns: repeat(2, 1fr); }
   .wrap { padding: 0 20px; }
 }
@@ -504,7 +504,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hero-actions .btn { width: 100%; justify-content: center; }
   .hero-actions .btn-text { width: auto; }
 
-  .catalog-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .catalog-grid { gap: 16px; }
   .catalog-card h3 { font-size: 1rem; }
 
   .process-list { grid-template-columns: 1fr; gap: 22px; }
@@ -522,6 +522,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media (max-width: 420px) {
-  .catalog-grid { grid-template-columns: 1fr; }
   .section-head.center { text-align: left; }
 }

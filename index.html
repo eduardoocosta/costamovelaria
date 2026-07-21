@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 <link rel="icon" type="image/png" href="img/logo-costa-movelaria-full.png">
 <link rel="stylesheet" href="style.css">
@@ -31,7 +32,7 @@
       <a href="#contato">Contato</a>
     </nav>
 
-    <a class="btn btn-ghost header-cta" href="https://wa.me/5543988737802" target="_blank" rel="noopener">Fale no WhatsApp</a>
+    <a class="btn btn-ghost header-cta" id="waHeader" href="https://wa.me/5543988737802" target="_blank" rel="noopener">Fale no WhatsApp</a>
 
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
       <span></span><span></span><span></span>
@@ -41,6 +42,7 @@
 
 <main>
 
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="wrap hero-inner">
       <p class="eyebrow" data-reveal>Marcenaria sob encomenda</p>
@@ -59,7 +61,7 @@
       </div>
     </div>
 
-   
+    <!-- Elemento de assinatura: junta de madeira (box joint) desenhada em SVG -->
     <svg class="joint-signature" id="jointHero" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
       <path class="joint-path" d="M0,30 H50 V10 H100 V50 H150 V10 H200 V50 H250 V10 H300 V50 H350 V10 H400 V50 H450 V10 H500 V50 H550 V10 H600" />
     </svg>
@@ -69,18 +71,19 @@
   <section class="section" id="sobre">
     <div class="wrap section-grid">
       <div class="section-head">
-        <p class="eyebrow">Sobre a Costa movelaria</p>
-        <h2>Marcenaria desde do ano de 1996.</h2>
+        <p class="eyebrow">Sobre a Costa Movelaria</p>
+        <h2>Marcenaria desde do ano de 1996</h2>
       </div>
       <div class="section-body">
         <p>
           A Costa Movelaria nasceu da vontade de fazer móveis que respeitam o espaço real
-          das pessoas — não o espaço ideal do catálogo. Cada projeto é projetado sob medida,
-          do primeiro rascunho ao último encaixe, com madeira selecionada e acabamento feito
-          à mão.
+          das pessoas — não o espaço ideal do catálogo. Cada projeto é desenhado sob medida,
+          do primeiro rascunho ao último encaixe, com o material selecionado e acabamento feito
+
         </p>
         <p>
-          Somos uma marcenaria que está na área à mais de 30 anos 
+          Somos uma marcenaria à mais de 30 anos , gerenciado por gente que entende de do material, medida
+          e prazo. Trabalhamos perto do cliente do orçamento à instalação.
         </p>
 
         <ul class="feature-list">
@@ -110,30 +113,44 @@
     <div class="wrap">
       <div class="section-head center">
         <p class="eyebrow">Catálogo</p>
-        <h2>Um projeto pra cada ambiente.</h2>
+        <h2>Projetos que já entregamos.</h2>
       </div>
 
       <div class="catalog-grid">
-        <!-- TODO: trocar cada .catalog-photo por <img src="fotos/cozinha.jpg" alt="..."> quando tivermos fotos reais -->
         <article class="catalog-card">
-          <div class="catalog-photo" data-tone="1"></div>
-          <h3>Cozinhas</h3>
-          <p>Bancadas, armários e ilhas planejadas pro seu jeito de cozinhar.</p>
+          <div class="catalog-photo">
+            <img src="img/projeto-2.jpg" alt="Cozinha planejada com armários, forno e micro-ondas embutidos" loading="lazy">
+          </div>
+          <h3>Cozinha planejada</h3>
+          <p>Armários, forno e micro-ondas embutidos, aproveitando cada nicho.</p>
         </article>
         <article class="catalog-card">
-          <div class="catalog-photo" data-tone="2"></div>
-          <h3>Quartos</h3>
-          <p>Guarda-roupas e closets que aproveitam cada centímetro do cômodo.</p>
+          <div class="catalog-photo">
+            <img src="img/projeto-4.jpg" alt="Ilha de cozinha planejada com cooktop e gaveteiro" loading="lazy">
+          </div>
+          <h3>Ilha com cooktop</h3>
+          <p>Bancada e gaveteiro planejados pra integrar cozinha e sala.</p>
         </article>
         <article class="catalog-card">
-          <div class="catalog-photo" data-tone="3"></div>
-          <h3>Salas</h3>
-          <p>Estantes, racks e painéis desenhados pro seu jeito de receber.</p>
+          <div class="catalog-photo">
+            <img src="img/projeto-1.jpg" alt="Gabinete de banheiro planejado com cuba dupla e tampo de mármore" loading="lazy">
+          </div>
+          <h3>Banheiro planejado</h3>
+          <p>Gabinete sob medida com gavetas e tampo em mármore.</p>
         </article>
         <article class="catalog-card">
-          <div class="catalog-photo" data-tone="4"></div>
-          <h3>Escritórios</h3>
-          <p>Home office sob medida, do tamanho da sua rotina.</p>
+          <div class="catalog-photo">
+            <img src="img/projeto-3.jpg" alt="Adega planejada com prateleiras de vidro e vitrine" loading="lazy">
+          </div>
+          <h3>Adega planejada</h3>
+          <p>Prateleiras de vidro e vitrine integradas ao ambiente.</p>
+        </article>
+        <article class="catalog-card">
+          <div class="catalog-photo">
+            <img src="img/projeto-5.jpg" alt="Armário planejado com portas de vidro e prateleiras" loading="lazy">
+          </div>
+          <h3>Armário planejado</h3>
+          <p>Portas de vidro e prateleiras sob medida pro espaço da sala.</p>
         </article>
       </div>
     </div>
@@ -192,22 +209,28 @@
         <h2>Quem já encomendou, conta.</h2>
       </div>
 
-      <div class="testimonial-slider" id="testimonialSlider">
-        <div class="testimonial-track" id="testimonialTrack">
-          <blockquote class="testimonial">
-            <p>“Minha lavanderia ficou impecável, amigos próximos precisavam de marceneiro para indicar agora já tenho um 😁 .”</p>
-            <footer>— Cliente, projeto de lavanderia</footer>
-          </blockquote>
-          <blockquote class="testimonial">
-            <p>“Acompanharam cada etapa e entregaram no prazo combinado. o serviço ficou excelente melhor do que imaginavamos ”</p>
-            <footer>— Cliente, projeto de salão de cristaleira</footer>
-          </blockquote>
-          <blockquote class="testimonial">
-            <p>“Minha cozinha ficou chique, o serviço deu mais vida e o espaço ficou perfeito para meus eletrodomésticos.”</p>
-            <footer>— Cliente, projeto de cozinha</footer>
-          </blockquote>
+      <div class="testimonial-slider swiper" id="testimonialSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <blockquote class="testimonial">
+              <p>“O guarda-roupa ficou exatamente do jeito que precisávamos, aproveitando um canto que a gente achava impossível de usar.”</p>
+              <footer>— Cliente, projeto de quarto</footer>
+            </blockquote>
+          </div>
+          <div class="swiper-slide">
+            <blockquote class="testimonial">
+              <p>“Acompanharam cada etapa e entregaram no prazo combinado. A cozinha ficou muito acima do que eu esperava.”</p>
+              <footer>— Cliente, projeto de cozinha</footer>
+            </blockquote>
+          </div>
+          <div class="swiper-slide">
+            <blockquote class="testimonial">
+              <p>“Precisava de um home office pequeno e funcional. O resultado foi um móvel que parece ter nascido junto com a sala.”</p>
+              <footer>— Cliente, projeto de escritório</footer>
+            </blockquote>
+          </div>
         </div>
-        <div class="testimonial-dots" id="testimonialDots"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </section>
@@ -217,7 +240,7 @@
     <div class="wrap contact-grid">
       <div>
         <p class="eyebrow">Contato</p>
-        <h2>Vamos planejar seu espaço..</h2>
+        <h2>Vamos desenhar o seu móvel.</h2>
         <p class="contact-lead">
           Conte um pouco sobre o ambiente e o que você precisa. Respondemos o mais rápido possível.
         </p>
@@ -225,7 +248,7 @@
         <ul class="contact-info">
           <li>
             <span>WhatsApp</span>
-            <a href="https://wa.me/5543988737802" target="_blank" rel="noopener">(43) 98873-7802</a>
+            <a id="waContato" href="https://wa.me/5543988737802" target="_blank" rel="noopener">(43) 98873-7802</a>
           </li>
           <li>
             <span>E-mail</span>
@@ -254,8 +277,7 @@
             <option value="quarto">Quarto</option>
             <option value="sala">Sala</option>
             <option value="escritorio">Escritório</option>
-            <option value="banheiro">Banheiro</option>
-            <option value="lavandeira">Lavanderia</option>
+             <option value="banheiro">Banheiro</option>
             <option value="outro">Outro</option>
           </select>
         </div>
@@ -282,10 +304,11 @@
   </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5543988737802" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+<a class="whatsapp-float" id="waFloat" href="https://wa.me/55988737802" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.1 0-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.3-.8.8-.8 1.9 0 1.1.8 2.2.9 2.4.1.1 1.6 2.4 3.9 3.4.5.2.9.4 1.3.5.5.2 1 .1 1.3.1.4-.1 1.7-.7 1.9-1.4s.3-1.2.2-1.3c-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.4 5.2L2 22l4.9-1.3C8.4 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.6-1.3l-.3-.2-3.2.8.8-3.1-.2-.3C3.6 14.4 3.1 12.7 3.1 12c0-4.9 4-8.9 8.9-8.9s8.9 4 8.9 8.9-4 8.9-8.9 8.9z"/></svg>
 </a>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
