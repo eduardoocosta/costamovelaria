@@ -1,10 +1,4 @@
-/* =========================================================
-   COSTA MOVELARIA — interações
-   ========================================================= */
 
-/* ⚠️ ÚNICO LUGAR pra trocar o número do WhatsApp da marcenaria.
-   Formato: 55 + DDD + número, sem espaço, traço ou parênteses.
-   Ex.: (41) 99123-4567  →  '5541991234567' */
 const WHATSAPP_NUMBER = '5543988737802';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupContactForm();
 });
 
-/* Atualiza os 3 links fixos do WhatsApp (header, contato, botão flutuante)
-   a partir da constante WHATSAPP_NUMBER, pra não precisar editar o HTML */
+
 function setupWhatsappLinks() {
   const ids = ['waHeader', 'waContato', 'waFloat'];
   ids.forEach((id) => {
@@ -26,7 +19,7 @@ function setupWhatsappLinks() {
   });
 }
 
-/* Ano automático no rodapé */
+
 function setYear() {
   const el = document.getElementById('ano');
   if (el) el.textContent = new Date().getFullYear();

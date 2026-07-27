@@ -119,11 +119,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .logo { display: flex; align-items: center; gap: 10px; }
 .logo-mark-img {
+  width: 46px;
   height: 46px;
-  width: auto;
   display: block;
-  /* a imagem da logo tem fundo quase preto sólido; mistura suave com o header */
-  mix-blend-mode: screen;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 .logo-text {
   font-family: var(--font-display);
